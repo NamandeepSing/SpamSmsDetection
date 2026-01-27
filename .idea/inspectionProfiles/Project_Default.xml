@@ -1,0 +1,36 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredPackages">
+        <list>
+          <option value="langchain" />
+          <option value="langchain-groq" />
+          <option value="faiss-cpu" />
+          <option value="tiktoken" />
+          <option value="langchain-community" />
+          <option value="langchain-openai" />
+          <option value="chromadb" />
+          <option value="sentence-transformers" />
+          <option value="pypdf" />
+          <option value="python-dotenv" />
+          <option value="pymupdf" />
+          <option value="unstructured" />
+          <option value="pdfminer" />
+          <option value="python-docx" />
+          <option value="docx2txt" />
+          <option value="pandas" />
+          <option value="openpyxl" />
+          <option value="jq" />
+          <option value="matplotlib" />
+          <option value="langchain-huggingface" />
+          <option value="langchain-experimental" />
+          <option value="rank_bm25" />
+          <option value="wikipedia" />
+          <option value="langgraph" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="SqlNoDataSourceInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>
