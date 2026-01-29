@@ -3,39 +3,31 @@ import pickle
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+from nltk.tokenize import RegexpTokenizer
 import string
-import nltk
+import os
 
-nltk.download('punkt')
+# Download only what is truly needed
 nltk.download('stopwords')
 
-# Load model and vectorizer
-tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
+# Load model and vectorizer safely
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+tfidf = pickle.load(open(os.path.join(BASE_DIR, 'vectorizer.pkl'), 'rb'))
+model = pickle.load(open(os.path.join(BASE_DIR, 'model.pkl'), 'rb'))
 
 ps = PorterStemmer()
+tokenizer = RegexpTokenizer(r'\w+')
+stop_words = set(stopwords.words('english'))
 
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text)
+    words = tokenizer.tokenize(text)
 
     y = []
-    for i in text:
-        if i.isalnum():
-            y.append(i)
-
-    text = y[:]
-    y.clear()
-
-    for i in text:
-        if i not in stopwords.words('english') and i not in string.punctuation:
-            y.append(i)
-
-    text = y[:]
-    y.clear()
-
-    for i in text:
-        y.append(ps.stem(i))
+    for word in words:
+        if word not in stop_words:
+            y.append(ps.stem(word))
 
     return " ".join(y)
 
